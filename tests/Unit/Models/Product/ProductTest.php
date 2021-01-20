@@ -5,6 +5,7 @@ namespace Tests\Unit\Models\Product;
 use Tests\TestCase;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductVariation;
 use Illuminate\Database\Eloquent\Collection;
 
 
@@ -28,5 +29,17 @@ class ProductTest extends TestCase
         );
 
         $this->assertInstanceOf(Collection::class, $product->categories);
+    }
+
+    /** @test*/
+    public function it_should_has_many_variations()
+    {
+        $product = factory(Product::class)->create(); 
+
+        $product->variations()->save(
+            factory(ProductVariation::class)->create()    
+        );
+
+        $this->assertInstanceOf(Collection::class, $product->variations);
     }
 }
