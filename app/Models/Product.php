@@ -2,22 +2,19 @@
 
 namespace App\Models;
 
-use App\Scoping\Scoper;
 use App\Models\Category;
 use App\Models\ProductVariation;
+use App\Models\Traits\CanBeScoped;
+use App\Models\Traits\FormattedPrice;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
+    use CanBeScoped, FormattedPrice;
+
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    public function scopeWithScopes(Builder $builder, array $scopes)
-    {   
-        return (new Scoper(request()))->apply($builder, $scopes);
     }
 
     public function categories()

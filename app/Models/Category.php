@@ -5,11 +5,10 @@ namespace App\Models;
 use App\Models\Product;
 use App\Models\Scopes\CategoryScope;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\RelationTraits\RelationOfCategory;
 
 class Category extends Model
 {
-    use RelationOfCategory, CategoryScope;
+    use CategoryScope;
     
     protected $fillable = [
         'name',
