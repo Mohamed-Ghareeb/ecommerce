@@ -9,7 +9,7 @@ class Product extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'image'=> 'array',
+        'images'=> 'array',
     ];
 
     public function brand()
