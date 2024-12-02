@@ -39,6 +39,9 @@ class OrderResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+
+    protected static ?string $recordTitleAttribute = 'id';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -193,6 +196,11 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id')
+                    ->label('Order ID')
+                    ->searchable()
+                    ->sortable(),
+
                 TextColumn::make('user.name')
                     ->searchable()
                     ->sortable(),
